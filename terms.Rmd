@@ -1,0 +1,104 @@
+---
+title: "Terminology - Taxonomy in DINA-Web"
+author: ''
+date: "April 4, 2016"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Alignment with terms used elsewhere
+
+> NB: Darwin Core terminology should be used and referred to
+
+* We might want to use the same terms as Kessy uses
+* We might want to align with GBIF's terms, too
+
+
+## Terms
+
+Here is a list of important terms used and some definitions
+
+Term | Swedish | Desc
+:---------|:-------------|:--------------------------------------------
+Taxonomy | Taxonomi | A tree structure with nodes at different levels aka ranks. Each node can have an established name ("valid name [zool] or accepted name [bot]") and synonyms. 
+Checklist | Checklista | GBIF uses this term as a synonym to taxonomy, but it could also be an extract of nodes from a classification rather than the full taxonomy, such as in a checklist of redlisted species
+Classification | Klassificering | Synonym for Taxonomy
+Nomenclatural codes | Nomenklaturkoder / Namnkoder | "ICZN" Iternational Code of Zoological Nomenclature or "ICBN" [alger, svampar och gröna växter] or Bacteria/Virae/Cultivaria (Kulturväxter)
+Vernacular name / Common name | Trivialnamn / Svenskt namn | Names used in common language and not the latin names / binomen / scientific names
+Scientific name | Vetenskapligt namn| Is always associated with a "type" specimen - one or several physical collection objects - the primary type specimen is called "holotype" and other type specimen are called paratypes or isotypes
+Taxon concept | Taxonkoncept eller Taxon | A mapping of physical collection objects or specimen to nodes in the taxonomy tree... the oldest description is the valid name and other names pointing to the same concept are synonyms
+sp. | sp. | Indicates that a determination is done at a level not lower than the species level
+indet. | indet. | Not determined at a level lower than the stated
+cf. | cf. | Near
+in edit. | in edit. | ?
+Homotypic synonyms| homotypiska synonymer | This is very common and means the combination is changed, you keep the author of the orig author so the basionym can be tracked and you can also have heterotypic synonyms
+
+
+## Ranks
+
+At least the following formal ranks are used, but there can be more ranks in between these and various informal ranks:
+
+Rang (swe) | Rank
+-----|------
+Art | Species
+Artgrupp / Sektioner | Species group | Informal rank
+Släkte | Genus
+Tribus | Tribe
+Familj | Family
+Ordning | Order
+Klass | Class
+Stam/Fylum | Phylum
+Rike | Kingdom
+
+## Name strings vs name usage
+
+Name string example: Turdus merula (L. 1758) consists of binomen and author (no abbrev except for Linné/Linnaeus) and the year
+
+Name usage example: In real quoted usage in literature, one can find the subspecies to appear between the species and genus and the author can be spelled differently but may still refer to the same taxon concept, so it is kind of like a synonym
+
+## Taxon vs type
+
+A taxon has a name, the name has a type, the taxon does NOT have a type.
+
+## Storage of specimen
+
+Since a species name can have many synonyms and these names are used to index the location of a specimen in a physical collection, the goal in collection management and curation is to co-locate specimen that belong together taxonomically.
+
+So taxonomies can be use in different ways - for example a storage taxonomy can be used internally to index the physical location of specimen ("filed as"), while an external reference taxonomy (read-only) can be used to present the collection data to external parties. Storage taxonomies often represent old taxonomies - it can take up to 30 years to re-organize specimens in a collection.
+
+Taxonomies or classifications can be sorted - either according to your own "systematic sort order" or alphabetically across ranks.
+
+## Specimen vs taxon name
+
+A specimen can be....
+  - *observed with* another taxon (an epiphyte growing on some other plant)
+  - *identified as* a taxon (uppstår när man skriver bestämningslappen)
+  - *stored under* a taxon name
+  - *a type for* a taxon name (uppstår när man publicerar)
+  
+The last 3 are most important for collection management.
+
+## Where to put a speciment?
+
+1. Which subcollection deoes the specimen belong to... is it a type?
+2. If it is a type specimen, what is the basionym? Store it under the basionym - typified name, original type name
+3. If it is a regular specimen, what is the current determination? When known, check if this taxon already exist in this collection? Check if the taxon is new or not. Think about what the basionym is and compare to the collection. If it is new, add a new place, else place it under the valid storage name for that taxon...
+
+# Botany storage classification
+
+"Valid storage name" is on the etiquette or label, doesn't need to be a valid, can be "Asteracease, indet." for "Asteracease" or "Angiosperm sp." for "Magnoliphyta".
+
+Valid storage names have a sort order that is specific for each collection. Sometimes Author and Year are provided to distinguish identical names that indicate different taxon concepts (the same name can be valid both for a plant and an animal)
+
+# Special names
+
+* "Pro parte" ("for part") synonyms - two or more taxa share the same name (even with author), for example "Turdus merula pp 1" and "Turdus merula pp 2" could be used for a black or a blue blackbird, but states that the collection manager hasn't yet had the time to deal with this. This is related to the sort order of the collection.
+
+* Hybrid formulas - sometimes with more than two names: *Salix caprea x rhamnifolia x viminalis* or with names from different genera *Agrostis stolonifera x Polypogon monspeliensis*. Often the specimen is placed on the first name alphabetically.
+
+* Labelled names ("in ed.") - potentially unpublished names found on labels
+
+* Homonyms - the same name but different authors ("auktor"), for example Bembidion virens Gyllenhal exists but also B. virens X and B. virens Y. Search GBIF for "bembidion virens", check GBIF Backbone and Catalogue of Life and see three results... The only valid is the last one.
